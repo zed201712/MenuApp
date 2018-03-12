@@ -1,0 +1,108 @@
+
+/* Class = "UILabel"; text = "Group"; ObjectID = "0dI-88-Kwa"; */
+"0dI-88-Kwa.text" = "Group";
+
+/* Class = "UITextField"; text = "nickname"; ObjectID = "3RG-FC-VZ7"; */
+"3RG-FC-VZ7.text" = "nickname";
+
+/* Class = "UILabel"; text = "Menu"; ObjectID = "8cb-ku-3wg"; */
+"8cb-ku-3wg.text" = "Menu";
+
+/* Class = "UIButton"; normalTitle = "+"; ObjectID = "AcY-D3-gMU"; */
+"AcY-D3-gMU.normalTitle" = "+";
+
+/* Class = "UIButton"; normalTitle = ">"; ObjectID = "BuE-zt-cHl"; */
+"BuE-zt-cHl.normalTitle" = ">";
+
+/* Class = "UIButton"; normalTitle = "-"; ObjectID = "CpL-RN-KUH"; */
+"CpL-RN-KUH.normalTitle" = "-";
+
+/* Class = "UITextView"; text = "MN"; ObjectID = "FPI-JQ-jb3"; */
+"FPI-JQ-jb3.text" = "MN";
+
+/* Class = "UIButton"; normalTitle = "+"; ObjectID = "GdK-fe-FVL"; */
+"GdK-fe-FVL.normalTitle" = "+";
+
+/* Class = "UIButton"; normalTitle = "1"; ObjectID = "JtP-kv-L9x"; */
+"JtP-kv-L9x.normalTitle" = "1";
+
+/* Class = "UILabel"; text = "縮寫"; ObjectID = "MfN-XP-mVa"; */
+"MfN-XP-mVa.text" = "縮寫";
+
+/* Class = "UIButton"; normalTitle = "3"; ObjectID = "Nvm-Md-lJF"; */
+"Nvm-Md-lJF.normalTitle" = "3";
+
+/* Class = "UITextField"; placeholder = "nick"; ObjectID = "QhC-93-N35"; */
+"QhC-93-N35.placeholder" = "nick";
+
+/* Class = "UITextField"; text = "nickname"; ObjectID = "QhC-93-N35"; */
+"QhC-93-N35.text" = "nickname";
+
+/* Class = "UIButton"; normalTitle = "+"; ObjectID = "SVn-pv-0D9"; */
+"SVn-pv-0D9.normalTitle" = "+";
+
+/* Class = "UILabel"; text = "Seat Number"; ObjectID = "UYL-pp-amC"; */
+"UYL-pp-amC.text" = "Seat Number";
+
+/* Class = "UIButton"; normalTitle = "<"; ObjectID = "Wdd-pW-0w8"; */
+"Wdd-pW-0w8.normalTitle" = "<";
+
+/* Class = "UIButton"; normalTitle = "-"; ObjectID = "WfV-eE-jkP"; */
+"WfV-eE-jkP.normalTitle" = "-";
+
+/* Class = "UIButton"; normalTitle = "-"; ObjectID = "YHm-PF-8QS"; */
+"YHm-PF-8QS.normalTitle" = "-";
+
+/* Class = "UIButton"; normalTitle = "+"; ObjectID = "Ye1-Jg-I3l"; */
+"Ye1-Jg-I3l.normalTitle" = "+";
+
+/* Class = "UIButton"; normalTitle = "2"; ObjectID = "d4v-ll-dns"; */
+"d4v-ll-dns.normalTitle" = "2";
+
+/* Class = "UILabel"; text = "縮寫"; ObjectID = "eOx-9E-F6g"; */
+"eOx-9E-F6g.text" = "縮寫";
+
+/* Class = "UIButton"; normalTitle = ">"; ObjectID = "ekq-7a-mKw"; */
+"ekq-7a-mKw.normalTitle" = ">";
+
+/* Class = "UILabel"; text = "Start Time"; ObjectID = "fji-Av-a8l"; */
+"fji-Av-a8l.text" = "Start Time";
+
+/* Class = "UILabel"; text = "MN"; ObjectID = "imA-kO-0EV"; */
+"imA-kO-0EV.text" = "MN";
+
+/* Class = "UITextField"; text = "nickname"; ObjectID = "j2W-MP-Lso"; */
+"j2W-MP-Lso.text" = "nickname";
+
+/* Class = "UITextField"; text = "nickname"; ObjectID = "jX4-fg-qkd"; */
+"jX4-fg-qkd.text" = "nickname";
+
+/* Class = "UITabBarItem"; title = "ListSetting"; ObjectID = "mDH-Yx-uhI"; */
+"mDH-Yx-uhI.title" = "ListSetting";
+
+/* Class = "UIButton"; normalTitle = "1"; ObjectID = "o0E-Oe-2Nf"; */
+"o0E-Oe-2Nf.normalTitle" = "1";
+
+/* Class = "UILabel"; text = "MN"; ObjectID = "oYc-Ot-K3P"; */
+"oYc-Ot-K3P.text" = "MN";
+
+/* Class = "UILabel"; text = "$"; ObjectID = "qc1-16-EL9"; */
+"qc1-16-EL9.text" = "$";
+
+/* Class = "UIButton"; normalTitle = "3"; ObjectID = "s9o-Sc-2ur"; */
+"s9o-Sc-2ur.normalTitle" = "3";
+
+/* Class = "UILabel"; text = "$"; ObjectID = "tzi-Db-UE4"; */
+"tzi-Db-UE4.text" = "$";
+
+/* Class = "UILabel"; text = "Start Time"; ObjectID = "u2Z-rc-Eos"; */
+"u2Z-rc-Eos.text" = "Start Time";
+
+/* Class = "UITextView"; text = "MN"; ObjectID = "u8L-Jh-ID1"; */
+"u8L-Jh-ID1.text" = "MN";
+
+/* Class = "UIButton"; normalTitle = "<"; ObjectID = "vpz-zD-mNY"; */
+"vpz-zD-mNY.normalTitle" = "<";
+
+/* Class = "UIButton"; normalTitle = "2"; ObjectID = "xtT-Kz-I5I"; */
+"xtT-Kz-I5I.normalTitle" = "2";
