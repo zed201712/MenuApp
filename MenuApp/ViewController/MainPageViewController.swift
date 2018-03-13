@@ -113,6 +113,8 @@ extension MainPageViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = self.mainListTableView.dequeueReusableCell(withIdentifier: "mainListTableViewCell") as! MainMenuTableViewCell
             
             cell.mainListListTableView.layer.borderWidth = 1
+            cell.contentView.layer.borderWidth = 1
+            cell.contentView.layer.borderColor = UIColor.brown.cgColor
             
             let index = indexPath.row
             cell.seatNumberLabel.text = "Seat. " + SeatListManage.displayNumber(index: globalMainList[index].seatNumber)

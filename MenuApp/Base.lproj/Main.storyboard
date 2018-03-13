@@ -34,7 +34,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hbI-HY-gGy">
-                                                    <rect key="frame" x="0.0" y="0.0" width="187.5" height="63.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="187.5" height="33.5"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <prototypes>
                                                         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="mainListListTableViewCell" id="oP4-5U-AMS" userLabel="mainListListTableViewCell" customClass="MainListListTableViewCell" customModule="MenuApp" customModuleProvider="target">
@@ -150,7 +150,7 @@
                                                 <constraint firstItem="hbI-HY-gGy" firstAttribute="top" secondItem="iB4-7J-gMN" secondAttribute="top" id="dHK-Vn-ys8"/>
                                                 <constraint firstItem="hbI-HY-gGy" firstAttribute="leading" secondItem="iB4-7J-gMN" secondAttribute="leading" id="dIm-fV-RKk"/>
                                                 <constraint firstItem="u2Z-rc-Eos" firstAttribute="top" secondItem="UYL-pp-amC" secondAttribute="bottom" id="nzW-RI-DZ4"/>
-                                                <constraint firstItem="hbI-HY-gGy" firstAttribute="bottom" secondItem="iB4-7J-gMN" secondAttribute="bottom" constant="20" symbolic="YES" id="roe-oh-Tll"/>
+                                                <constraint firstItem="hbI-HY-gGy" firstAttribute="bottom" secondItem="iB4-7J-gMN" secondAttribute="bottom" constant="-10" id="roe-oh-Tll"/>
                                                 <constraint firstItem="UYL-pp-amC" firstAttribute="trailing" secondItem="iB4-7J-gMN" secondAttribute="trailing" constant="-10" id="ueg-Nr-Qm9"/>
                                                 <constraint firstItem="hbI-HY-gGy" firstAttribute="trailing" secondItem="iB4-7J-gMN" secondAttribute="centerX" id="vy1-B1-Jkq"/>
                                                 <constraint firstItem="qIP-pI-xC7" firstAttribute="leading" secondItem="hbI-HY-gGy" secondAttribute="trailing" constant="20" id="w8H-70-8us"/>
@@ -1461,6 +1461,6 @@
         <image name="Settings" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Goz-s7-j5N"/>
+        <segue reference="o6v-NO-buN"/>
     </inferredMetricsTieBreakers>
 </document>
