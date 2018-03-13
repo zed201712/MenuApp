@@ -145,7 +145,7 @@ class ListSettingViewController: UIViewController {
     }
     
     func addgroupNameTextView()->Void {
-        let text = UITextView()
+        let text = KeyboardControllTextView()
         let index = CGFloat(groupUiArray.groupNameTextView.count)
         text.frame = CGRect(x: index * groupButtonWidth, y: CGFloat(AddGroupButton.frame.origin.y + AddGroupButton.frame.size.height), width: groupButtonWidth, height: 50)
         text.layer.borderWidth = 1
@@ -166,7 +166,16 @@ class ListSettingViewController: UIViewController {
             groupUiArray.groupNameTextView[index] = nil
             groupUiArray.groupNameTextView.remove(at: index)
             
+            for i in 0 ..< globalMenuList.count {
+                if globalMenuList[i].groupNumber == index {
+                    globalMenuList[i].groupNumber = 0
+                } else if globalMenuList[i].groupNumber > index {
+                    globalMenuList[i].groupNumber = globalMenuList[i].groupNumber - 1
+                }
+            }
+            
             self.refreshGroupButtonTag()
+            self.listTableView.reloadData()
             
             if uiIndex.groupIndex >= globalGroupList.count {
                 uiIndex.groupIndex = globalGroupList.count - 1
@@ -233,17 +242,12 @@ class ListSettingViewController: UIViewController {
 //MARK: - UITextViewDelegate
 extension ListSettingViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
-        
-        if self.textViewIsMenuTextView(textView: textView) == true {
-            uiIndex.menuIndex = textView.tag
-        } else {
-            if self.isGroupIndexVaild() {
-                self.refreshGroupColor()
-            }
-            uiIndex.groupIndex = textView.tag
-            if self.isGroupIndexVaild() {
-                self.highlightTextview(textView: groupUiArray.groupNameTextView[uiIndex.groupIndex]!)
-            }
+        if self.isGroupIndexVaild() {
+            self.refreshGroupColor()
+        }
+        uiIndex.groupIndex = textView.tag
+        if self.isGroupIndexVaild() {
+            self.highlightTextview(textView: groupUiArray.groupNameTextView[uiIndex.groupIndex]!)
         }
         
         if self.isMenuIndexVaild() {
@@ -255,24 +259,8 @@ extension ListSettingViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         globalGroupList[uiIndex.groupIndex].name = groupUiArray.groupNameTextView[uiIndex.groupIndex]!.text
         if isMenuIndexVaild() {
-            globalMenuList[uiIndex.menuIndex].name = self.selectMenuCell().menuNameTextView.text
+            globalMenuList[uiIndex.menuIndex].name = self.selectMenuCell().menuNameText.text!
         }
-    }
-    
-    func textViewIsMenuTextView(textView: UITextView)->Bool {
-        var returnValue = false
-        let tempIndex = uiIndex.menuIndex
-        
-        uiIndex.menuIndex = textView.tag
-        if isMenuIndexVaild() {
-            if self.selectMenuCell().menuNameTextView == textView {
-                returnValue = true
-            }
-        }
-        uiIndex.menuIndex = tempIndex
-        
-        
-        return returnValue
     }
 }
 
@@ -285,6 +273,7 @@ extension ListSettingViewController: UITextFieldDelegate {
     }
     
     @objc func priceEditingChanged() {
+        globalMenuList[uiIndex.menuIndex].name = self.selectMenuCell().menuNameText.text!
         globalMenuList[uiIndex.menuIndex].price = self.selectMenuCell().menuPriceText.text!
         globalMenuList[uiIndex.menuIndex].nickname = self.selectMenuCell().menuNicknameText.text!
     }
@@ -296,7 +285,7 @@ extension ListSettingViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(menuListCellHeight)
+        return CGFloat(80)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -305,9 +294,11 @@ extension ListSettingViewController: UITableViewDelegate, UITableViewDataSource 
         //cell.menuNameLabel.text = String(intToChar(value: indexPath.row, signAdd: "A"))
         cell.menuNameLabel.text = String(indexPath.row + 1)
         
-        cell.menuNameTextView.tag = indexPath.row
-        cell.menuNameTextView.text = globalMenuList[indexPath.row].name
-        cell.menuNameTextView.delegate = self
+        cell.menuNameText.tag = indexPath.row
+        cell.menuNameText.text = globalMenuList[indexPath.row].name
+        cell.menuNameText.layer.borderWidth = 1
+        cell.menuNameText.delegate = self
+        cell.menuNameText.addTarget(self, action: #selector(self.priceEditingChanged), for: UIControlEvents.editingChanged)
         
         cell.menuPriceText.tag = indexPath.row
         cell.menuPriceText.text = globalMenuList[indexPath.row].price

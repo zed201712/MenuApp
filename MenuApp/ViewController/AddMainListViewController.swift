@@ -331,7 +331,7 @@ extension AddMainListViewController: UITableViewDelegate, UITableViewDataSource 
             if list.isCheck == true {
                 cell.backgroundColor = globalMyColor[myColorEnum.lightgreen.rawValue]
             } else {
-                cell.backgroundColor = globalMyColor[myColorEnum.lightblue.rawValue]
+                cell.backgroundColor = globalMyColor[myColorEnum.gray.rawValue]
             }
             
             cell.selectionStyle = .none
@@ -393,7 +393,7 @@ extension AddMainListViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if tableView == self.mainListTableView {
-            return CGFloat(menuListCellHeight)
+            return CGFloat(80)
         } else {
             return CGFloat(menuListCellHeight)
         }

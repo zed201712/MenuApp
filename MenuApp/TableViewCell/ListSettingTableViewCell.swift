@@ -13,7 +13,7 @@ class ListSettingViewCell: UITableViewCell {
     @IBOutlet weak var menuNicknameLabel: UILabel!
     @IBOutlet weak var menuPriceLabel: UILabel!
     @IBOutlet weak var menuNameLabel: UILabel!
-    @IBOutlet weak var menuNameTextView: UITextView!
+    @IBOutlet weak var menuNameText: UITextField!
     @IBOutlet weak var menuNicknameText: UITextField!
     @IBOutlet weak var menuPriceText: UITextField!
     

@@ -46,7 +46,7 @@ class MainMenuTableViewCell: UITableViewCell {
         if globalMainList[index].isCheck == true {
             self.backgroundColor = globalMyColor[myColorEnum.lightgreen.rawValue]
         } else {
-            self.backgroundColor = globalMyColor[myColorEnum.lightblue.rawValue]
+            self.backgroundColor = globalMyColor[myColorEnum.gray.rawValue]
         }
     }
     

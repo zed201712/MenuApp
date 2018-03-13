@@ -20,6 +20,7 @@ class SeatSettingsPageViewController: UIViewController {
     var drawCellUnitList: [CGFloat] = []
     var lastDrawListIndex = 0
     var lastColorIndex = 0
+    var colorGroupIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -182,6 +183,8 @@ class SeatSettingsPageViewController: UIViewController {
     func changeSlideValueDraw()->Void {
         self.drawLastMapList(color: UIColor.black)
         self.setLastDrawIndex(index: Int(self.seatNumberSlider.value))
+        
+        globalSeatList.myColorIndex[lastDrawListIndex] = self.colorGroupIndex
         self.drawGroupMapListDrawView(mapListIndex: lastDrawListIndex, color: globalMyColor[globalSeatList.myColorIndex[lastDrawListIndex]])
     }
     
@@ -270,6 +273,7 @@ extension SeatSettingsPageViewController: UICollectionViewDelegate, UICollection
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let index = Int(self.seatNumberSlider.value)
+        colorGroupIndex = indexPath.row
         
         globalSeatList.myColorIndex[index] = indexPath.row
         self.setLastDrawIndex(index: index)

@@ -19,6 +19,8 @@
 		934F800A204F771A00F4F256 /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F8009204F771A00F4F256 /* DrawView.swift */; };
 		934F800C204F776C00F4F256 /* SeatSettingsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F800B204F776C00F4F256 /* SeatSettingsPageViewController.swift */; };
 		934F8010204FA73F00F4F256 /* GroupMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F800F204FA73F00F4F256 /* GroupMap.swift */; };
+		935723662056DCEF00AB7A51 /* KeyboardControllTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935723652056DCEF00AB7A51 /* KeyboardControllTextView.swift */; };
+		935723682056EE4C00AB7A51 /* KeyboardControllTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935723672056EE4C00AB7A51 /* KeyboardControllTextField.swift */; };
 		9363DE78204E6AD700EF861D /* GetDateString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9363DE77204E6AD700EF861D /* GetDateString.swift */; };
 		9363DE7A204EC7E400EF861D /* MainListListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9363DE79204EC7E400EF861D /* MainListListTableViewCell.swift */; };
 		938C24E120543D9F00677430 /* SeatNumberPageTouchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C24E020543D9F00677430 /* SeatNumberPageTouchView.swift */; };
@@ -75,6 +77,8 @@
 		934F8009204F771A00F4F256 /* DrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
 		934F800B204F776C00F4F256 /* SeatSettingsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatSettingsPageViewController.swift; sourceTree = "<group>"; };
 		934F800F204FA73F00F4F256 /* GroupMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMap.swift; sourceTree = "<group>"; };
+		935723652056DCEF00AB7A51 /* KeyboardControllTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardControllTextView.swift; sourceTree = "<group>"; };
+		935723672056EE4C00AB7A51 /* KeyboardControllTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardControllTextField.swift; sourceTree = "<group>"; };
 		9363DE77204E6AD700EF861D /* GetDateString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDateString.swift; sourceTree = "<group>"; };
 		9363DE79204EC7E400EF861D /* MainListListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListListTableViewCell.swift; sourceTree = "<group>"; };
 		938C24E020543D9F00677430 /* SeatNumberPageTouchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatNumberPageTouchView.swift; sourceTree = "<group>"; };
@@ -189,6 +193,8 @@
 				9309464C205252D200FA6915 /* SeatListManage.swift */,
 				9309464E2052535300FA6915 /* GlobalVariable.swift */,
 				938C24E020543D9F00677430 /* SeatNumberPageTouchView.swift */,
+				935723652056DCEF00AB7A51 /* KeyboardControllTextView.swift */,
+				935723672056EE4C00AB7A51 /* KeyboardControllTextField.swift */,
 				93F8EC0E2033183500ABB0E7 /* Main.storyboard */,
 				93F8EC112033183500ABB0E7 /* Assets.xcassets */,
 				93F8EC132033183500ABB0E7 /* LaunchScreen.storyboard */,
@@ -361,6 +367,7 @@
 				93F8EC0D2033183500ABB0E7 /* MainPageViewController.swift in Sources */,
 				934CA5EE20373E9800ED2A99 /* MainMenuTableViewCell.swift in Sources */,
 				9309464B205230A600FA6915 /* SeatNumberPageViewController.swift in Sources */,
+				935723682056EE4C00AB7A51 /* KeyboardControllTextField.swift in Sources */,
 				9309464D205252D200FA6915 /* SeatListManage.swift in Sources */,
 				938C24E120543D9F00677430 /* SeatNumberPageTouchView.swift in Sources */,
 				933CF2D32054E3A200EB4664 /* SettingsWithTextViewController.swift in Sources */,
@@ -378,6 +385,7 @@
 				93FB2BF220451E11000B0BCE /* GroupCollectionViewCell.swift in Sources */,
 				9363DE78204E6AD700EF861D /* GetDateString.swift in Sources */,
 				93F8EC3B2035352B00ABB0E7 /* ListDataForm.swift in Sources */,
+				935723662056DCEF00AB7A51 /* KeyboardControllTextView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

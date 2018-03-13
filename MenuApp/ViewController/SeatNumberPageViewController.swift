@@ -28,7 +28,6 @@ class SeatNumberPageViewController: UIViewController {
     var drawViewPpt = CGFloat(0)
     var drawCellUnitList: [CGFloat] = []
     var lastDrawListIndex = 0
-    var lastColorIndex = 0
     var drawViewTouchIndex = -1
     var selectMainListIndex = -1
     
@@ -40,6 +39,7 @@ class SeatNumberPageViewController: UIViewController {
         
         self.drawView.delegate = self
         self.mainListView.delegate = self
+        FileRW.appFirstLoad()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -122,7 +122,7 @@ class SeatNumberPageViewController: UIViewController {
         if list.isCheck {
             self.mainListView.backgroundColor = globalMyColor[myColorEnum.lightgreen.rawValue]
         } else {
-            self.mainListView.backgroundColor = globalMyColor[myColorEnum.lightblue.rawValue]
+            self.mainListView.backgroundColor = globalMyColor[myColorEnum.gray.rawValue]
         }
         self.mainListTableView.reloadData()
     }
@@ -194,12 +194,18 @@ class SeatNumberPageViewController: UIViewController {
                 }
             }
         }
+        
+        for list in globalMainList {
+            if list.seatNumber >= 0 {
+                self.drawGroupMapListDrawViewWithUseable(mapListIndex: list.seatNumber, color: globalMyColor[globalSeatList.myColorIndex[list.seatNumber]])
+            }
+        }
         self.changeSlideValueDraw()
     }
     
     func changeSlideValueDraw()->Void {
         if drawViewTouchIndex >= 0 {
-            self.drawLastMapList(color: globalMyColor[lastColorIndex])
+            self.drawLastMapList()
             self.setLastDrawIndex(index: drawViewTouchIndex)
             self.drawGroupMapListDrawView(mapListIndex: lastDrawListIndex, color: UIColor.magenta.withAlphaComponent(1))
         }
@@ -214,18 +220,30 @@ class SeatNumberPageViewController: UIViewController {
     
     func setLastDrawIndex(index: Int)->Void {
         lastDrawListIndex = index
-        lastColorIndex = globalSeatList.myColorIndex[lastDrawListIndex]
     }
     
-    func drawLastMapList(color: UIColor)->Void {
-        for p in globalSeatList.groupMap.gList[lastDrawListIndex] {
-            self.rectDrawView(mapPoint: p, color: color)
+    func drawLastMapList()->Void {
+        var color = UIColor.red
+        if globalSeatList.useable[lastDrawListIndex] {
+            color = globalMyColor[globalSeatList.myColorIndex[lastDrawListIndex]]
         }
+        self.drawGroupMapListDrawViewWithUseable(mapListIndex: lastDrawListIndex, color: color)
     }
     
     func drawGroupMapListDrawView(mapListIndex: Int, color: UIColor)->Void {
         for p in globalSeatList.groupMap.gList[mapListIndex] {
             self.rectDrawView(mapPoint: p, color: color)
+        }
+        self.setLastDrawIndex(index: mapListIndex)
+    }
+    
+    func drawGroupMapListDrawViewWithUseable(mapListIndex: Int, color: UIColor)->Void {
+        var tempColor = UIColor.red
+        if globalSeatList.useable[mapListIndex] {
+            tempColor = color
+        }
+        for p in globalSeatList.groupMap.gList[mapListIndex] {
+            self.rectDrawView(mapPoint: p, color: tempColor)
         }
         self.setLastDrawIndex(index: mapListIndex)
     }
@@ -283,7 +301,7 @@ extension SeatNumberPageViewController: DrawViewDelegate {
                 } else {
                     self.selectMainListIndex = -1
                     self.drawViewTouchIndex = -1
-                    self.drawLastMapList(color: globalMyColor[lastColorIndex])
+                    self.drawLastMapList()
                     self.clsMainListView(seatNumber: "-")
                 }
                 

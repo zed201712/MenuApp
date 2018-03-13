@@ -28,15 +28,15 @@ enum myColorEnum: Int {
 
 class MainPageViewController: UIViewController {
     
-    
     @IBOutlet weak var menuLabel: UILabel!
     @IBOutlet weak var mainListTableView: UITableView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         FileRW.fileLoadAll()
         FileRW.appFirstLoad()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -124,7 +124,7 @@ extension MainPageViewController: UITableViewDelegate, UITableViewDataSource {
             if globalMainList[index].isCheck == true {
                 cell.backgroundColor = globalMyColor[myColorEnum.lightgreen.rawValue]
             } else {
-                cell.backgroundColor = globalMyColor[myColorEnum.lightblue.rawValue]
+                cell.backgroundColor = globalMyColor[myColorEnum.gray.rawValue]
             }
             
             cell.mainListListTableView.reloadData()
@@ -149,7 +149,7 @@ extension MainPageViewController: UITableViewDelegate, UITableViewDataSource {
         if tableView == self.mainListTableView {
             return mainListCellHeight
         } else {
-            return 40
+            return 20
         }
     }
 }
