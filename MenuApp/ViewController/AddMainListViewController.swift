@@ -224,13 +224,16 @@ class AddMainListViewController: UIViewController {
     
     class func deleteGlobalMainList(listIndex: Int, stateString: String) {
         globalMainList[listIndex].state = stateString
+        globalMainList[listIndex].endDate = GetDateString.nowDate()
         globalMainList[listIndex].isHidden = true
         SeatListManage.setUseable(index: globalMainList[listIndex].seatNumber, useable: true)
         
         let temp = globalMainList[listIndex]
-        globalMainListHistory.append(temp)
-        while (globalMainListHistory.count >= globalLimit) {
-            globalMainListHistory.remove(at: 0)
+        if temp.state == "clear" {
+            globalMainListHistory.append(temp)
+            while (globalMainListHistory.count >= globalLimit) {
+                globalMainListHistory.remove(at: 0)
+            }
         }
         globalMainList.remove(at: listIndex)
         

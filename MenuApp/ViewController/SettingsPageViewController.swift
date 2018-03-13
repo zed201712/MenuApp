@@ -12,6 +12,7 @@ import UIKit
 enum SettingPageEnum: Int {
     case ListSettingPage = 0
     case SeatSettingPage
+    case listHistory
     case settingsWithTextAll
     case settingsWithTextMenuList
     case settingsWithTextMainList
@@ -63,6 +64,45 @@ class SettingsPageViewController: UIViewController {
         
         globalMyColor[myColorEnum.orange.rawValue] = UIColor.orange
     }
+    
+    func listHistoryDetailListFormat(list: [ListAndCount])->String {
+        var temp = ""
+        let sign = "-"
+        let listHistoryFormatSign = ","
+        
+        if list.count > 0 {
+            temp = list[0].data.name + sign + list[0].data.price + sign + String(list[0].count)
+        }
+        for i in 1 ..< list.count {
+            temp = temp + listHistoryFormatSign + list[i].data.name + sign + list[i].data.price + sign + String(list[i].count)
+        }
+        
+        return temp
+    }
+    
+    func listHistoryFormat(list: MainListForm)->String {
+        var temp = list.startTime
+        let sign = ","
+        
+        temp = temp + sign + list.endDate
+        temp = temp + sign + String(list.seatNumber)
+        temp = temp + sign + list.price
+        temp = temp + sign + list.detailInfo
+        temp = temp + sign + self.listHistoryDetailListFormat(list: list.list)
+        
+        return temp
+    }
+    
+    func listHistoryString()->String {
+        var temp = ""
+        let sign = "\n"
+        
+        for list in globalMainListHistory {
+            temp = temp + self.listHistoryFormat(list: list) + sign
+        }
+        
+        return temp
+    }
 }
 
 extension SettingsPageViewController: UITableViewDelegate, UITableViewDataSource {
@@ -78,6 +118,8 @@ extension SettingsPageViewController: UITableViewDelegate, UITableViewDataSource
             cell.textLabel?.text = NSLocalizedString("Menu Settings", comment: "")
         case SettingPageEnum.SeatSettingPage.rawValue:
             cell.textLabel?.text = NSLocalizedString("Seat Settings", comment: "")
+        case SettingPageEnum.listHistory.rawValue:
+            cell.textLabel?.text = NSLocalizedString("List History", comment: "")
         case SettingPageEnum.settingsWithTextAll.rawValue:
             cell.textLabel?.text = NSLocalizedString("Save All Sttings with context", comment: "")
         case SettingPageEnum.settingsWithTextMenuList.rawValue:
@@ -109,6 +151,8 @@ extension SettingsPageViewController: UITableViewDelegate, UITableViewDataSource
             self.performSegue(withIdentifier: "ListSetting", sender: nil)
         case SettingPageEnum.SeatSettingPage.rawValue:
             self.performSegue(withIdentifier: "SeatSettings", sender: nil)
+        case SettingPageEnum.listHistory.rawValue:
+            self.performSegue(withIdentifier: "settingsToSettingsWithTextView", sender: nil)
         case SettingPageEnum.settingsWithTextAll.rawValue:
             self.performSegue(withIdentifier: "settingsToSettingsWithTextView", sender: nil)
         case SettingPageEnum.settingsWithTextMenuList.rawValue:
@@ -131,6 +175,8 @@ extension SettingsPageViewController: SettingsWithTextViewDelegate {
         let sign = fileSettingProperty.componentsSign.rawValue + fileSettingProperty.componentsSign.rawValue
         
         switch clickCellIndex {
+            case SettingPageEnum.listHistory.rawValue:
+                return self.listHistoryString()
             case SettingPageEnum.settingsWithTextAll.rawValue:
                 return FileRW.fileSaveMenuListString() + sign + FileRW.fileSaveMainListString() + sign + FileRW.fileSaveSeatListString()
             case SettingPageEnum.settingsWithTextMenuList.rawValue:

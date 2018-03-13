@@ -242,7 +242,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="List" id="BBs-Pv-iOp"/>
+                    <tabBarItem key="tabBarItem" title="List" image="List" id="BBs-Pv-iOp"/>
                     <connections>
                         <outlet property="mainListTableView" destination="VDP-VA-b49" id="yNZ-bo-LRB"/>
                         <outlet property="menuLabel" destination="fFs-Yk-BPY" id="Hci-aX-9js"/>
@@ -603,7 +603,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bYF-gX-VIY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" id="Pmn-4t-ZNY"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="Map" id="Pmn-4t-ZNY"/>
                     <connections>
                         <outlet property="button1" destination="c9v-De-Ula" id="Lb2-Pv-FB0"/>
                         <outlet property="button2" destination="yZM-1X-vvW" id="0MN-3d-tZo"/>
@@ -1442,7 +1442,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="l1X-i9-wEW"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" id="x1W-wl-4ue"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="Settings" id="x1W-wl-4ue"/>
                     <connections>
                         <segue destination="dpS-lk-vIO" kind="show" identifier="ListSetting" id="Fzk-f1-y1G"/>
                         <segue destination="6ry-84-l3R" kind="show" identifier="SeatSettings" id="wcV-MX-JaM"/>
@@ -1456,6 +1456,9 @@
     </scenes>
     <resources>
         <image name="BG1" width="1280" height="719"/>
+        <image name="List" width="42" height="26"/>
+        <image name="Map" width="32" height="30"/>
+        <image name="Settings" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Goz-s7-j5N"/>
