@@ -34,7 +34,6 @@ class MainPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        FileRW.fileLoadAll()
         FileRW.appFirstLoad()
         
     }
@@ -54,6 +53,10 @@ class MainPageViewController: UIViewController {
             let mainCell = cell as! MainMenuTableViewCell
             mainCell.mainListListTableView.reloadData()
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print(self.mainListTableView.frame.width)
     }
     
     //MARK: - function

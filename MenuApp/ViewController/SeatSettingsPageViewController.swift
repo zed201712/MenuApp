@@ -32,7 +32,7 @@ class SeatSettingsPageViewController: UIViewController {
         drawView.delegate = self
         
         self.seatNumberSlider.minimumValue = 1
-        self.seatNumberSlider.maximumValue = Float(globalLimit)
+        self.seatNumberSlider.maximumValue = Float(globalLimit) - 1
         self.seatNumberLabel.text = String(Int(self.seatNumberSlider.value))
         
         self.setLastDrawIndex(index: Int(self.seatNumberSlider.value))
@@ -64,6 +64,11 @@ class SeatSettingsPageViewController: UIViewController {
     
     @IBAction func saveButtonTouchUpInside(_ sender: Any) {
         FileRW.fileSaveSeatList()
+        self.dismiss(animated: false, completion: nil)
+    }
+    
+    @IBAction func backButtonTouchUpInside(_ sender: Any) {
+        FileRW.fileLoad(fileName: fileSettingProperty.seatListSettingsFileName.rawValue)
         self.dismiss(animated: false, completion: nil)
     }
     

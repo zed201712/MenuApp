@@ -121,13 +121,13 @@ extension SettingsPageViewController: UITableViewDelegate, UITableViewDataSource
         case SettingPageEnum.listHistory.rawValue:
             cell.textLabel?.text = NSLocalizedString("List History", comment: "")
         case SettingPageEnum.settingsWithTextAll.rawValue:
-            cell.textLabel?.text = NSLocalizedString("Save All Sttings with context", comment: "")
+            cell.textLabel?.text = NSLocalizedString("Save All Settings with context", comment: "")
         case SettingPageEnum.settingsWithTextMenuList.rawValue:
             cell.textLabel?.text = NSLocalizedString("Save Menu Settings with context", comment: "")
         case SettingPageEnum.settingsWithTextMainList.rawValue:
-            cell.textLabel?.text = NSLocalizedString("Save List with context", comment: "")
+            cell.textLabel?.text = NSLocalizedString("Save List Settings with context", comment: "")
         case SettingPageEnum.settingsWithTextSeatList.rawValue:
-            cell.textLabel?.text = NSLocalizedString("Save Map with context", comment: "")
+            cell.textLabel?.text = NSLocalizedString("Save Map Settings with context", comment: "")
         case SettingPageEnum.settingsSample.rawValue:
             cell.textLabel?.text = NSLocalizedString("Sample Settings context", comment: "")
         default:

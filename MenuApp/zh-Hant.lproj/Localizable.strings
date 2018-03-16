@@ -6,4 +6,18 @@
   Copyright © 2018年 Zed. All rights reserved.
 */
 
-"ALL" = "全部";
+"ALL" = "所有";
+"Add" = "增加";
+"Delete" = "刪除";
+"Alert" = "警告";
+"DeleteCheckMsg" = "確定刪除?";
+"Yes" = "是";
+"No" = "否";
+"Menu Settings" = "菜單設定";
+"Seat Settings" = "座位設定";
+"List History" = "紀錄";
+"Save All Settings with context" = "使用文字設定檔存取所有設定";
+"Save Menu Settings with context" = "使用文字設定檔存取菜單設定";
+"Save List Settings with context" = "使用文字設定檔存取訂單設定";
+"Save Map Settings with context" = "使用文字設定檔存取座位設定";
+"Sample Settings context" = "樣本文字設定檔存取";

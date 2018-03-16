@@ -48,6 +48,8 @@ class MainMenuTableViewCell: UITableViewCell {
         } else {
             self.backgroundColor = globalMyColor[myColorEnum.gray.rawValue]
         }
+        
+        FileRW.fileSaveMainList()
     }
     
 }

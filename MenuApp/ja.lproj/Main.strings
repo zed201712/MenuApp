@@ -1,33 +1,33 @@
 
 /* Class = "UILabel"; text = "Group"; ObjectID = "0dI-88-Kwa"; */
-"0dI-88-Kwa.text" = "群組";
+"0dI-88-Kwa.text" = "グループ";
 
 /* Class = "UILabel"; text = "Menu"; ObjectID = "2RA-j4-WKg"; */
-"2RA-j4-WKg.text" = "菜單";
+"2RA-j4-WKg.text" = "メニュー";
 
 /* Class = "UITextField"; placeholder = "$$$"; ObjectID = "3RG-FC-VZ7"; */
 "3RG-FC-VZ7.placeholder" = "$$$";
 
 /* Class = "UITextField"; text = "nickname"; ObjectID = "3RG-FC-VZ7"; */
-"3RG-FC-VZ7.text" = "簡稱";
+"3RG-FC-VZ7.text" = "簡単な名前";
 
 /* Class = "UIButton"; normalTitle = "<"; ObjectID = "4BY-hI-Cly"; */
 "4BY-hI-Cly.normalTitle" = "<";
 
 /* Class = "UILabel"; text = "Name"; ObjectID = "5WO-YT-Myc"; */
-"5WO-YT-Myc.text" = "名稱";
+"5WO-YT-Myc.text" = "名前";
 
 /* Class = "UILabel"; text = "Menu"; ObjectID = "8cb-ku-3wg"; */
-"8cb-ku-3wg.text" = "菜單";
+"8cb-ku-3wg.text" = "メニュー";
 
 /* Class = "UIButton"; normalTitle = "Clear"; ObjectID = "9mh-pc-gdj"; */
-"9mh-pc-gdj.normalTitle" = "清除";
+"9mh-pc-gdj.normalTitle" = "クリア";
 
 /* Class = "UIButton"; normalTitle = "Clear All"; ObjectID = "AcY-D3-gMU"; */
-"AcY-D3-gMU.normalTitle" = "全部清除";
+"AcY-D3-gMU.normalTitle" = "すべてクリア";
 
 /* Class = "UITabBarItem"; title = "List"; ObjectID = "BBs-Pv-iOp"; */
-"BBs-Pv-iOp.title" = "清單";
+"BBs-Pv-iOp.title" = "リスト";
 
 /* Class = "UIButton"; normalTitle = ">"; ObjectID = "BuE-zt-cHl"; */
 "BuE-zt-cHl.normalTitle" = ">";
@@ -42,25 +42,25 @@
 "IO7-8Y-5uQ.text" = "Label";
 
 /* Class = "UIButton"; normalTitle = "cls"; ObjectID = "JtP-kv-L9x"; */
-"JtP-kv-L9x.normalTitle" = "重置";
+"JtP-kv-L9x.normalTitle" = "リセット";
 
 /* Class = "UIButton"; normalTitle = ">"; ObjectID = "Krt-Pe-GO0"; */
 "Krt-Pe-GO0.normalTitle" = ">";
 
 /* Class = "UIButton"; normalTitle = "Check"; ObjectID = "Nvm-Md-lJF"; */
-"Nvm-Md-lJF.normalTitle" = "結帳";
+"Nvm-Md-lJF.normalTitle" = "お会計";
 
 /* Class = "UITabBarItem"; title = "Map"; ObjectID = "Pmn-4t-ZNY"; */
-"Pmn-4t-ZNY.title" = "座位";
+"Pmn-4t-ZNY.title" = "席";
 
 /* Class = "UIButton"; normalTitle = "12:00"; ObjectID = "QDt-de-3kD"; */
 "QDt-de-3kD.normalTitle" = "12:00";
 
 /* Class = "UITextField"; placeholder = "nickname"; ObjectID = "QhC-93-N35"; */
-"QhC-93-N35.placeholder" = "簡稱";
+"QhC-93-N35.placeholder" = "簡単な名前";
 
 /* Class = "UITextField"; text = "nickname"; ObjectID = "QhC-93-N35"; */
-"QhC-93-N35.text" = "簡稱";
+"QhC-93-N35.text" = "簡単な名前";
 
 /* Class = "UIButton"; normalTitle = "+"; ObjectID = "SVn-pv-0D9"; */
 "SVn-pv-0D9.normalTitle" = "+";
@@ -96,10 +96,10 @@
 "and-FB-3Ec.text" = "Seat Number";
 
 /* Class = "UITextField"; placeholder = "Comment"; ObjectID = "c6Z-rj-1qb"; */
-"c6Z-rj-1qb.placeholder" = "註解";
+"c6Z-rj-1qb.placeholder" = "コメント";
 
 /* Class = "UIButton"; normalTitle = "Clear"; ObjectID = "c9v-De-Ula"; */
-"c9v-De-Ula.normalTitle" = "清除";
+"c9v-De-Ula.normalTitle" = "クリア";
 
 /* Class = "UIButton"; normalTitle = "AddButton"; ObjectID = "cjs-zO-Egy"; */
 "cjs-zO-Egy.normalTitle" = "AddButton";
@@ -108,7 +108,7 @@
 "cox-Nl-4wk.normalTitle" = ">";
 
 /* Class = "UITextField"; placeholder = "Name"; ObjectID = "cvr-2z-HJw"; */
-"cvr-2z-HJw.placeholder" = "名稱";
+"cvr-2z-HJw.placeholder" = "名前";
 
 /* Class = "UIButton"; normalTitle = "Calc"; ObjectID = "d4v-ll-dns"; */
 "d4v-ll-dns.normalTitle" = "計算";
@@ -117,7 +117,7 @@
 "ekq-7a-mKw.normalTitle" = ">";
 
 /* Class = "UILabel"; text = "Menu"; ObjectID = "fFs-Yk-BPY"; */
-"fFs-Yk-BPY.text" = "菜單";
+"fFs-Yk-BPY.text" = "メニュー";
 
 /* Class = "UILabel"; text = "MN"; ObjectID = "imA-kO-0EV"; */
 "imA-kO-0EV.text" = "MN";
@@ -138,7 +138,7 @@
 "mDH-Yx-uhI.title" = "ListSetting";
 
 /* Class = "UIButton"; normalTitle = "Clear"; ObjectID = "o0E-Oe-2Nf"; */
-"o0E-Oe-2Nf.normalTitle" = "清除";
+"o0E-Oe-2Nf.normalTitle" = "クリア";
 
 /* Class = "UILabel"; text = "MN"; ObjectID = "oYc-Ot-K3P"; */
 "oYc-Ot-K3P.text" = "MN";
@@ -150,7 +150,7 @@
 "rb9-QS-RaH.text" = "Label";
 
 /* Class = "UIButton"; normalTitle = "Check"; ObjectID = "s9o-Sc-2ur"; */
-"s9o-Sc-2ur.normalTitle" = "結帳";
+"s9o-Sc-2ur.normalTitle" = "お会計";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "t2s-Pb-C3M"; */
 "t2s-Pb-C3M.text" = "Label";
@@ -162,7 +162,7 @@
 "u2Z-rc-Eos.text" = "Start Time";
 
 /* Class = "UIButton"; normalTitle = "Check"; ObjectID = "uo2-6x-Sc1"; */
-"uo2-6x-Sc1.normalTitle" = "結帳";
+"uo2-6x-Sc1.normalTitle" = "お会計";
 
 /* Class = "UIButton"; normalTitle = "<"; ObjectID = "vpz-zD-mNY"; */
 "vpz-zD-mNY.normalTitle" = "<";

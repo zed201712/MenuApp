@@ -5,3 +5,19 @@
   Created by 游聖傑 on 2018/2/16.
   Copyright © 2018年 Zed. All rights reserved.
 */
+
+"ALL" = "すべて";
+"Add" = "Add";
+"Delete" = "Delete";
+"Alert" = "Alert";
+"DeleteCheckMsg" = "Do you want to delete?";
+"Yes" = "はい";
+"No" = "いいえ";
+"Menu Settings" = "メニュー設定";
+"Seat Settings" = "席設定";
+"List History" = "リコーダー";
+"Save All Settings with context" = "すべて設定のテキストファイル";
+"Save Menu Settings with context" = "メニュー設定のテキストファイル";
+"Save List Settings with context" = "注文設定のテキストファイル";
+"Save Map Settings with context" = "席設定のテキストファイル";
+"Sample Settings context" = "サンプル設定のテキストファイル";

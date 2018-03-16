@@ -91,6 +91,8 @@ class SeatNumberPageViewController: UIViewController {
         self.button1.isHidden = globalMainList[index].isCheck
         globalMainList[index].isCheck = !globalMainList[index].isCheck
         self.setMainListView(listIndex: self.selectMainListIndex)
+        
+        FileRW.fileSaveMainList()
     }
     
     //MARK: - function
