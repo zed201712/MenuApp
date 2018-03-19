@@ -24,6 +24,7 @@ class SeatNumberPageViewController: UIViewController {
     @IBOutlet weak var button1: UIButton!
     @IBOutlet weak var button2: UIButton!
     @IBOutlet weak var button3: UIButton!
+    @IBOutlet weak var changeListDisplayLable: UIButton!
     
     var drawViewPpt = CGFloat(0)
     var drawCellUnitList: [CGFloat] = []
@@ -32,6 +33,7 @@ class SeatNumberPageViewController: UIViewController {
     var selectMainListIndex = -1
     
     var touchEnd = true
+    var isSetMainListView = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +41,10 @@ class SeatNumberPageViewController: UIViewController {
         
         self.drawView.delegate = self
         self.mainListView.delegate = self
+        self.changeListDisplayLable.layer.borderWidth = 0
+        self.changeListDisplayLable.backgroundColor = UIColor.yellow
+        self.changeListDisplayLable.layer.masksToBounds = true
+        self.changeListDisplayLable.layer.cornerRadius = self.changeListDisplayLable.frame.width / 2
         FileRW.appFirstLoad()
     }
     
@@ -59,7 +65,8 @@ class SeatNumberPageViewController: UIViewController {
             }
         } else {
             self.changeSlideValueDraw()
-            self.setMainListView(listIndex: self.selectMainListIndex)
+            globalMainListIndex = self.selectMainListIndex
+            self.setMainListView(listIndex: globalMainListIndex)
         }
         self.touchEnd = true
     }
@@ -74,8 +81,8 @@ class SeatNumberPageViewController: UIViewController {
     @IBAction func button1TouchUpInside(_ sender: Any) {
         //Clear Button
         
-        let index = self.selectMainListIndex
-        let seatNumber = String(globalMainList[self.selectMainListIndex].seatNumber)
+        let index = globalMainListIndex
+        let seatNumber = String(globalMainList[index].seatNumber)
         AddMainListViewController.deleteGlobalMainList(listIndex: index, stateString: "clear")
         self.clsMainListView(seatNumber: seatNumber)
     }
@@ -87,10 +94,10 @@ class SeatNumberPageViewController: UIViewController {
     @IBAction func button3TouchUpInside(_ sender: Any) {
         //Check Button
         
-        let index = self.selectMainListIndex
+        let index = globalMainListIndex
         self.button1.isHidden = globalMainList[index].isCheck
         globalMainList[index].isCheck = !globalMainList[index].isCheck
-        self.setMainListView(listIndex: self.selectMainListIndex)
+        self.setMainListView(listIndex: globalMainListIndex)
         
         FileRW.fileSaveMainList()
     }
@@ -98,6 +105,8 @@ class SeatNumberPageViewController: UIViewController {
     //MARK: - function
     
     func clsMainListView(seatNumber: String)->Void {
+        isSetMainListView = false
+        
         self.button1.isHidden = true
         self.button2.isHidden = true
         self.button3.isHidden = true
@@ -113,35 +122,39 @@ class SeatNumberPageViewController: UIViewController {
     }
     
     func setMainListView(listIndex: Int)->Void {
+        isSetMainListView = true
+        
         self.button3.isHidden = false
         
         let list = globalMainList[listIndex]
         self.seatNumberLabel.text = "Seat. " + SeatListManage.displayNumber(index: list.seatNumber)
-        self.startTimeLabel.text = list.startTime
-        self.priceLabel.text = "$ " + list.price
+        if list.startTime == "" {
+            self.startTimeLabel.text = " - : -"
+        } else {
+            self.startTimeLabel.text = list.startTime
+        }
+        if list.price == "" {
+            self.priceLabel.text = "$ -"
+        } else {
+            self.priceLabel.text = "$ " + list.price
+        }
         
         self.button1.isHidden = !list.isCheck
-        if list.isCheck {
+        if list.list.count == 0 {
+            self.mainListView.backgroundColor = UIColor.white
+            self.button3.isHidden = true
+        } else if list.isCheck {
             self.mainListView.backgroundColor = globalMyColor[myColorEnum.lightgreen.rawValue]
+            self.button3.isHidden = false
         } else {
             self.mainListView.backgroundColor = globalMyColor[myColorEnum.gray.rawValue]
+            self.button3.isHidden = false
         }
         self.mainListTableView.reloadData()
     }
     
     func findMainListIndex(seatListIndex: Int)->Int {
-        var findSeatListIndex = 0
-        for list in globalMainList {
-            if list.seatNumber == seatListIndex {
-                break
-            }
-            findSeatListIndex = findSeatListIndex + 1
-        }
-        if findSeatListIndex < globalMainList.count {
-            return findSeatListIndex
-        } else {
-            return -1
-        }
+        return globalSeatList.findMainIndex(index: seatListIndex)
     }
     
     func globalMainListAdd(seatNumber: Int)->Void {
@@ -151,12 +164,7 @@ class SeatNumberPageViewController: UIViewController {
         list.startTime = GetDateString.nowTime()
         list.startDate = GetDateString.nowDate()
         list.seatNumber = seatNumber
-        SeatListManage.setUseable(index: list.seatNumber, useable: false)
-        globalMainList.append(list)
-        while (globalGroupList.count >= globalLimit) {
-            globalMainList.remove(at: 0)
-            globalMainListIndex = globalMainListIndex - 1
-        }
+        MainPageViewController.globalMainListPut(list: list)
     }
     
     
@@ -192,6 +200,7 @@ class SeatNumberPageViewController: UIViewController {
             for y in 0..<globalSeatMapResolution {
                 if globalSeatList.groupMap.gMap[x][y] != 0 {
                     let index = globalSeatList.groupMap.gMap[x][y]
+                    globalSeatList.mainIndex[index] = -1
                     self.rectDrawView(mapPoint: CGPoint.init(x: x, y: y), color: globalMyColor[globalSeatList.myColorIndex[index]])
                 }
             }
@@ -206,10 +215,10 @@ class SeatNumberPageViewController: UIViewController {
     }
     
     func changeSlideValueDraw()->Void {
-        if drawViewTouchIndex >= 0 {
+        if self.drawViewTouchIndex >= 0 {
             self.drawLastMapList()
-            self.setLastDrawIndex(index: drawViewTouchIndex)
-            self.drawGroupMapListDrawView(mapListIndex: lastDrawListIndex, color: UIColor.magenta.withAlphaComponent(1))
+            self.setLastDrawIndex(index: self.drawViewTouchIndex)
+            self.drawGroupMapListDrawView(mapListIndex: self.lastDrawListIndex, color: UIColor.magenta.withAlphaComponent(1))
         }
     }
     
@@ -226,7 +235,11 @@ class SeatNumberPageViewController: UIViewController {
     
     func drawLastMapList()->Void {
         var color = UIColor.red
+        
+        let mainListIndex = globalSeatList.findMainIndex(index: lastDrawListIndex)
         if globalSeatList.useable[lastDrawListIndex] {
+            color = globalMyColor[globalSeatList.myColorIndex[lastDrawListIndex]]
+        } else if mainListIndex >= 0 && globalMainList[mainListIndex].list.count == 0 {
             color = globalMyColor[globalSeatList.myColorIndex[lastDrawListIndex]]
         }
         self.drawGroupMapListDrawViewWithUseable(mapListIndex: lastDrawListIndex, color: color)
@@ -241,27 +254,59 @@ class SeatNumberPageViewController: UIViewController {
     
     func drawGroupMapListDrawViewWithUseable(mapListIndex: Int, color: UIColor)->Void {
         var tempColor = UIColor.red
+        
+        let mainListIndex = globalSeatList.findMainIndex(index: mapListIndex)
         if globalSeatList.useable[mapListIndex] {
             tempColor = color
+        } else if mainListIndex >= 0 && globalMainList[mainListIndex].list.count == 0 {
+            tempColor = color
         }
-        for p in globalSeatList.groupMap.gList[mapListIndex] {
-            self.rectDrawView(mapPoint: p, color: tempColor)
-        }
-        self.setLastDrawIndex(index: mapListIndex)
+        self.drawGroupMapListDrawView(mapListIndex: mapListIndex, color: tempColor)
     }
 }
 
 extension SeatNumberPageViewController: DrawViewDelegate {
     func drawViewTouchEnd(point: CGPoint?) {
         self.touchEnd = true
+        self.changeListDisplayLable.isHidden = true
+        
+        if let point = point {
+            let x = Int(point.x / drawViewPpt)
+            let y = Int(point.y / drawViewPpt)
+            let mapPoint = CGPoint.init(x: x, y: y)
+            if globalSeatList.groupMap.isValidInput(point: mapPoint, value: globalSeatList.groupMap.listLimit - 1) {
+                let seatListIndex = globalSeatList.groupMap.gMap[x][y]
+                let touchEndListIndex = self.findMainListIndex(seatListIndex: seatListIndex)
+                
+                if seatListIndex > 0 && self.selectMainListIndex >= 0 {
+                    if touchEndListIndex >= 0 && touchEndListIndex != self.selectMainListIndex {
+                        MainPageViewController.globalManiListChangeExceptSeatNumber(index1: touchEndListIndex, index2: self.selectMainListIndex)
+                        globalMainListIndex = touchEndListIndex
+                        self.setMainListView(listIndex: globalMainListIndex)
+                        
+                        let temp = self.lastDrawListIndex
+                        self.setLastDrawIndex(index: globalMainList[self.selectMainListIndex].seatNumber)
+                        self.drawLastMapList()
+                        self.setLastDrawIndex(index: temp)
+                        
+                        self.drawViewTouchIndex = seatListIndex
+                        self.changeSlideValueDraw()
+                    } else if touchEndListIndex >= 0 && touchEndListIndex == self.selectMainListIndex {
+                        if touchEndListIndex < globalMainList.count {
+                            globalMainListIndex = self.selectMainListIndex
+                            self.performSegue(withIdentifier: "SeatNumberToAddMainList", sender: nil)
+                        }
+                    }
+                }
+                
+            }
+        }
     }
     
     func drawViewTouch(point: CGPoint?)->Void {
-        if self.touchEnd == false {
-            return
-        }
+        //self.changeListDisplayLable.frame.origin = CGPoint.init(x: self.drawView.frame.origin.x + point!.x, y: self.drawView.frame.origin.y + point!.y)
+        self.changeListDisplayLable.center = CGPoint.init(x: self.drawView.frame.origin.x + point!.x, y: self.drawView.frame.origin.y + point!.y)
         
-        self.touchEnd = false
         if let point = point {
             let x = Int(point.x / drawViewPpt)
             let y = Int(point.y / drawViewPpt)
@@ -271,36 +316,20 @@ extension SeatNumberPageViewController: DrawViewDelegate {
                 
                 let seatListIndex = globalSeatList.groupMap.gMap[x][y]
                 if seatListIndex != 0 {
-                    let lastSeatListIndex = self.drawViewTouchIndex
-                    self.drawViewTouchIndex = seatListIndex
-                    self.changeSlideValueDraw()
+                    if seatListIndex != self.drawViewTouchIndex {
+                        self.drawViewTouchIndex = seatListIndex
+                        self.changeSlideValueDraw()
+                        
+                        globalMainListIndex = self.findMainListIndex(seatListIndex: seatListIndex)
+                        self.setMainListView(listIndex: globalMainListIndex)
+                    }
                     
-                    var clickAgain = false
-                    if lastSeatListIndex == seatListIndex {
-                        clickAgain = true
+                    if self.touchEnd == true {
+                        self.selectMainListIndex = self.findMainListIndex(seatListIndex: seatListIndex)
+                        self.changeListDisplayLable.setTitle(String(seatListIndex), for: .normal)
+                        self.changeListDisplayLable.isHidden = false
                     }
-                    if clickAgain {
-                        if globalSeatList.useable[seatListIndex] {
-                            globalMainListIndex = globalMainList.count
-                            self.globalMainListAdd(seatNumber: seatListIndex)
-                            self.performSegue(withIdentifier: "SeatNumberToAddMainList", sender: nil)
-                        } else {
-                            if self.selectMainListIndex >= 0 && self.selectMainListIndex < globalMainList.count {
-                                globalMainListIndex = self.selectMainListIndex
-                                self.performSegue(withIdentifier: "SeatNumberToAddMainList", sender: nil)
-                            }
-                        }
-                    } else {
-                        if globalSeatList.useable[seatListIndex] {
-                            self.selectMainListIndex = -1
-                            self.clsMainListView(seatNumber: String(seatListIndex))
-                        } else {
-                            self.selectMainListIndex = self.findMainListIndex(seatListIndex: seatListIndex)
-                            
-                            self.setMainListView(listIndex: self.selectMainListIndex)
-                        }
-                    }
-                } else {
+                } else if self.touchEnd == true {
                     self.selectMainListIndex = -1
                     self.drawViewTouchIndex = -1
                     self.drawLastMapList()
@@ -311,14 +340,15 @@ extension SeatNumberPageViewController: DrawViewDelegate {
             }
         }
         
+        self.touchEnd = false
     }
     
 }
 
 extension SeatNumberPageViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.selectMainListIndex >= 0 {
-            return globalMainList[self.selectMainListIndex].list.count
+        if isSetMainListView {
+            return globalMainList[globalMainListIndex].list.count
         } else {
             return 0
         }
@@ -327,7 +357,7 @@ extension SeatNumberPageViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "seatNumberPageTableViewCell") as! MainListListTableViewCell
-        let index = self.selectMainListIndex
+        let index = globalMainListIndex
         let listIndex = indexPath.row
         let list = globalMainList[index].list[listIndex].data
         cell.nicknameLabel.text = list.nickname
@@ -345,8 +375,7 @@ extension SeatNumberPageViewController: UITableViewDelegate, UITableViewDataSour
 
 extension SeatNumberPageViewController: SeatNumberPageTouchViewDelegate {
     func touchViewTouchEnd(point: CGPoint?) {
-        if self.selectMainListIndex >= 0 {
-            globalMainListIndex = self.selectMainListIndex
+        if globalMainListIndex >= 0 && globalMainListIndex < globalMainList.count {
             self.performSegue(withIdentifier: "SeatNumberToAddMainList", sender: nil)
         }
     }

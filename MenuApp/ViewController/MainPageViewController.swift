@@ -36,6 +36,7 @@ class MainPageViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         FileRW.appFirstLoad()
         
+        self.mainListTableView.isEditing = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,10 +57,76 @@ class MainPageViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        print(self.mainListTableView.frame.width)
+        super.viewDidAppear(animated)
     }
     
     //MARK: - function
+    class func globalManiListChangeExceptSeatNumber(index1: Int, index2: Int) {
+        let temp = globalMainList[index1]
+        globalMainList[index1] = globalMainList[index2]
+        globalMainList[index2] = temp
+        
+        globalMainList[index2].seatNumber = globalMainList[index1].seatNumber
+        globalMainList[index1].seatNumber = temp.seatNumber
+        
+        FileRW.fileSaveMainList()
+    }
+    
+    class func addEmptyList()->Void {
+        for i in 0 ..< globalSeatList.groupMap.gList.count {
+            
+            if globalSeatList.groupMap.gList[i].count > 0 {
+                if globalSeatList.useable[i] == true {
+                    var isFind = false
+                    for list in globalMainList {
+                        if list.seatNumber == i {
+                            isFind = true
+                            break
+                        }
+                    }
+                    if isFind == false {
+                        var list = MainListForm()
+                        list.seatNumber = i
+                        MainPageViewController.globalMainListPut(list: list)
+                    }
+                }
+            } else {
+                if globalSeatList.useable[i] == false {
+                    for mainListIndex in 0 ..< globalMainList.count {
+                        if globalMainList[mainListIndex].seatNumber == i {
+                            if globalMainList[mainListIndex].list.count == 0 {
+                                AddMainListViewController.deleteGlobalMainList(listIndex: mainListIndex, stateString: "Delete")
+                            }
+                            break
+                        }
+                    }
+                }
+            }
+            
+        }
+    }
+    
+    class func globalMainListPut(list: MainListForm)->Void {
+        SeatListManage.setUseable(index: list.seatNumber, useable: false)
+        
+        var insertIndex = -1
+        for i in 0 ..< globalMainList.count {
+            if list.seatNumber < globalMainList[i].seatNumber {
+                insertIndex = i
+                break
+            }
+        }
+        if insertIndex >= 0 {
+            globalMainList.insert(list, at: insertIndex)
+        } else {
+            globalMainList.append(list)
+        }
+        
+        while (globalGroupList.count >= globalLimit) {
+            AddMainListViewController.deleteGlobalMainList(listIndex: 0, stateString: "Delete")
+            globalMainListIndex = globalMainListIndex - 1
+        }
+    }
     
     class func globalMainListAdd()->Void {
         globalMainListIndex = globalMainList.count
@@ -68,12 +135,7 @@ class MainPageViewController: UIViewController {
         list.startTime = GetDateString.nowTime()
         list.startDate = GetDateString.nowDate()
         list.seatNumber = SeatListManage.findNextUseable(startIndex: 1, toFront: true)
-        SeatListManage.setUseable(index: list.seatNumber, useable: false)
-        globalMainList.append(list)
-        while (globalGroupList.count >= globalLimit) {
-            globalMainList.remove(at: 0)
-            globalMainListIndex = globalMainListIndex - 1
-        }
+        MainPageViewController.globalMainListPut(list: list)
     }
     
     //MARK: - IBAction
@@ -126,10 +188,15 @@ extension MainPageViewController: UITableViewDelegate, UITableViewDataSource {
             
             cell.tag = index
             cell.button1.isHidden = !globalMainList[index].isCheck
-            if globalMainList[index].isCheck == true {
+            if globalMainList[index].list.count == 0 {
+                cell.backgroundColor = UIColor.white
+                cell.button3.isHidden = true
+            } else if globalMainList[index].isCheck == true {
                 cell.backgroundColor = globalMyColor[myColorEnum.lightgreen.rawValue]
+                cell.button3.isHidden = false
             } else {
                 cell.backgroundColor = globalMyColor[myColorEnum.gray.rawValue]
+                cell.button3.isHidden = false
             }
             
             cell.mainListListTableView.reloadData()
@@ -156,5 +223,28 @@ extension MainPageViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             return 20
         }
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        MainPageViewController.globalManiListChangeExceptSeatNumber(index1: sourceIndexPath.row, index2: destinationIndexPath.row)
+        
+        tableView.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            AddMainListViewController.deleteGlobalMainList(listIndex: indexPath.row, stateString: "clear")
+            
+            tableView.reloadData()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
 }

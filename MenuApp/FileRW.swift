@@ -95,9 +95,9 @@ class FileRW: NSObject {
         }
     }
     class func fileLoadAll()->Void {
+        self.fileLoad(fileName: fileSettingProperty.mainListSettingsFileName.rawValue)
         self.fileLoad(fileName: fileSettingProperty.listSettingsFileName.rawValue)
         self.fileLoad(fileName: fileSettingProperty.seatListSettingsFileName.rawValue)
-        self.fileLoad(fileName: fileSettingProperty.mainListSettingsFileName.rawValue)
     }
     
     class func fileSaveMenuList()->Void {
@@ -136,6 +136,7 @@ class FileRW: NSObject {
                         tempIndex = 2
                     case fileSettingProperty.seatListSettingsFileName.rawValue:
                         tempIndex = 2
+                        MainPageViewController.addEmptyList()
                     default:
                         tempIndex = arrCount
                 }
@@ -243,6 +244,9 @@ class FileRW: NSObject {
         var loadStr = FileRW.FileRead(fileName: fileName)
         
         self.fileStringLoad(loadString: &loadStr)
+        if fileName == fileSettingProperty.seatListSettingsFileName.rawValue {
+            MainPageViewController.addEmptyList()
+        }
     }
     
     class func fileSaveMenuListString()->String {

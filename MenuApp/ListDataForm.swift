@@ -13,6 +13,23 @@ struct seatNumberListDataForm {
     var useable = Array<Bool>(repeating: true, count: globalLimit)
     var myColorIndex = Array<Int>(repeating: 0, count: globalLimit)
     var groupMap = GroupMap(resolution: globalSeatMapResolution, limit: globalLimit)
+    var mainIndex = Array<Int>(repeating: -1, count: globalLimit)
+    
+    mutating func findMainIndex(index: Int)->Int {
+        if mainIndex[index] < 0 {
+            var findSeatListIndex = 0
+            for list in globalMainList {
+                if list.seatNumber == index {
+                    break
+                }
+                findSeatListIndex = findSeatListIndex + 1
+            }
+            if findSeatListIndex < globalMainList.count {
+                self.mainIndex[index] = findSeatListIndex
+            }
+        }
+        return mainIndex[index]
+    }
 }
 
 struct GroupUIArray {

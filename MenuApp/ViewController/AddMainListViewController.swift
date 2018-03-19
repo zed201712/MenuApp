@@ -91,6 +91,9 @@ class AddMainListViewController: UIViewController {
     }
     
     @IBAction func saveButtonTouchUpInside(_ sender: Any) {
+        if globalMainList[globalMainListIndex].startTime == "" {
+            globalMainList[globalMainListIndex].startTime = GetDateString.nowTime()
+        }
         FileRW.fileSaveMainList()
         self.dismiss(animated: false, completion: nil)
     }
@@ -125,6 +128,9 @@ class AddMainListViewController: UIViewController {
     @IBAction func startTimeButtonTouchUpInside(_ sender: Any) {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
+        if globalMainList[globalMainListIndex].startTime == "" {
+            globalMainList[globalMainListIndex].startTime = GetDateString.nowTime()
+        }
         startTimeDatePicker.date = formatter.date(from: globalMainList[globalMainListIndex].startTime)!
         self.datePickView.isHidden = false
     }
@@ -226,7 +232,6 @@ class AddMainListViewController: UIViewController {
         globalMainList[listIndex].state = stateString
         globalMainList[listIndex].endDate = GetDateString.nowDate()
         globalMainList[listIndex].isHidden = true
-        SeatListManage.setUseable(index: globalMainList[listIndex].seatNumber, useable: true)
         
         let temp = globalMainList[listIndex]
         if temp.state == "clear" {
@@ -235,7 +240,20 @@ class AddMainListViewController: UIViewController {
                 globalMainListHistory.remove(at: 0)
             }
         }
-        globalMainList.remove(at: listIndex)
+        if globalSeatList.groupMap.gMap[globalMainList[listIndex].seatNumber].count == 0 {
+            globalMainList.remove(at: listIndex)
+            SeatListManage.setUseable(index: globalMainList[listIndex].seatNumber, useable: true)
+        } else {
+            globalMainList[listIndex].detailInfo = ""
+            globalMainList[listIndex].startTime = ""
+            globalMainList[listIndex].list.removeAll()
+            globalMainList[listIndex].isHidden = false
+            globalMainList[listIndex].state = ""
+            globalMainList[listIndex].price = ""
+            globalMainList[listIndex].isCheck = false
+            globalMainList[listIndex].startDate = ""
+            globalMainList[listIndex].endDate = ""
+        }
         
         FileRW.fileSaveMainList()
     }

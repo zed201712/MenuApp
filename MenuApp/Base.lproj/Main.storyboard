@@ -584,6 +584,11 @@
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="jNz-3z-rcG"/>
                             </view>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SYS-gp-ECf" userLabel="ChangeListDisplayLable">
+                                <rect key="frame" x="164" y="318" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -605,6 +610,7 @@
                         <outlet property="button1" destination="c9v-De-Ula" id="Lb2-Pv-FB0"/>
                         <outlet property="button2" destination="yZM-1X-vvW" id="0MN-3d-tZo"/>
                         <outlet property="button3" destination="uo2-6x-Sc1" id="TKE-gQ-TLL"/>
+                        <outlet property="changeListDisplayLable" destination="SYS-gp-ECf" id="xKI-sS-gs4"/>
                         <outlet property="drawView" destination="ClR-lu-UAS" id="03Z-HE-9bZ"/>
                         <outlet property="mainListTableView" destination="klU-0I-rhG" id="BWN-N8-kcW"/>
                         <outlet property="mainListView" destination="mMv-R9-h7T" id="SpB-RZ-5Lt"/>
