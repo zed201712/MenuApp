@@ -305,7 +305,7 @@ extension SeatNumberPageViewController: DrawViewDelegate {
     
     func drawViewTouch(point: CGPoint?)->Void {
         //self.changeListDisplayLable.frame.origin = CGPoint.init(x: self.drawView.frame.origin.x + point!.x, y: self.drawView.frame.origin.y + point!.y)
-        self.changeListDisplayLable.center = CGPoint.init(x: self.drawView.frame.origin.x + point!.x, y: self.drawView.frame.origin.y + point!.y)
+        self.changeListDisplayLable.center = CGPoint.init(x: self.drawView.frame.origin.x + point!.x, y: self.drawView.frame.origin.y + point!.y - 80)
         
         if let point = point {
             let x = Int(point.x / drawViewPpt)
