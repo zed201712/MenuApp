@@ -175,7 +175,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AcY-D3-gMU" userLabel="ClsAllListButton">
-                                <rect key="frame" x="141" y="20" width="107" height="48"/>
+                                <rect key="frame" x="138" y="20" width="107" height="48"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Clear All">
@@ -186,7 +186,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WfV-eE-jkP" userLabel="AddListButton">
-                                <rect key="frame" x="268" y="20" width="107" height="48"/>
+                                <rect key="frame" x="265" y="20" width="30" height="48"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="+">
@@ -196,8 +196,19 @@
                                     <action selector="addListButtonTouchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="shS-lm-d9X"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdr-6z-tRE" userLabel="EditListButton">
+                                <rect key="frame" x="315" y="20" width="50" height="48"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Edit">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="editListButtonTouchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FhA-0G-u00"/>
+                                </connections>
+                            </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vpz-zD-mNY" userLabel="UndoButton">
-                                <rect key="frame" x="1" y="20" width="30" height="48"/>
+                                <rect key="frame" x="-2" y="20" width="30" height="48"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="&lt;">
@@ -205,7 +216,7 @@
                                 </state>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ekq-7a-mKw" userLabel="RedoButton">
-                                <rect key="frame" x="51" y="20" width="30" height="48"/>
+                                <rect key="frame" x="48" y="20" width="30" height="48"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="&gt;">
@@ -224,7 +235,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="VDP-VA-b49" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1em-Es-QHQ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="VDP-VA-b49" secondAttribute="bottom" id="5eG-FU-axZ"/>
+                            <constraint firstItem="VDP-VA-b49" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="5eG-FU-axZ"/>
                             <constraint firstItem="3Le-cT-Owb" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="AN4-I7-ghu"/>
                             <constraint firstItem="3Le-cT-Owb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="B9Y-Hx-EWG"/>
                             <constraint firstItem="WfV-eE-jkP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="CVB-mU-dO0"/>
@@ -233,11 +244,12 @@
                             <constraint firstItem="3Le-cT-Owb" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="I8y-gw-Ys0"/>
                             <constraint firstItem="vpz-zD-mNY" firstAttribute="top" secondItem="AcY-D3-gMU" secondAttribute="top" id="JUR-B7-2rn"/>
                             <constraint firstItem="ekq-7a-mKw" firstAttribute="leading" secondItem="vpz-zD-mNY" secondAttribute="trailing" constant="20" id="RT6-nS-NzB"/>
-                            <constraint firstItem="WfV-eE-jkP" firstAttribute="width" secondItem="AcY-D3-gMU" secondAttribute="width" id="W57-Gx-L55"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VDP-VA-b49" secondAttribute="trailing" id="ZbD-CK-OgI"/>
+                            <constraint firstItem="gdr-6z-tRE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Ycw-sC-Nw8"/>
+                            <constraint firstItem="VDP-VA-b49" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ZbD-CK-OgI"/>
+                            <constraint firstItem="gdr-6z-tRE" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-10" id="bNB-3l-yZR"/>
                             <constraint firstItem="VDP-VA-b49" firstAttribute="top" secondItem="WfV-eE-jkP" secondAttribute="bottom" id="c3F-xC-GIl"/>
                             <constraint firstItem="3Le-cT-Owb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="e91-Zb-BdE"/>
-                            <constraint firstItem="WfV-eE-jkP" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="eVG-uf-4g0"/>
+                            <constraint firstItem="gdr-6z-tRE" firstAttribute="leading" secondItem="WfV-eE-jkP" secondAttribute="trailing" constant="20" id="eVG-uf-4g0"/>
                             <constraint firstItem="AcY-D3-gMU" firstAttribute="leading" secondItem="ekq-7a-mKw" secondAttribute="trailing" constant="60" id="qhV-yO-6Et"/>
                             <constraint firstItem="AcY-D3-gMU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="zz8-BT-6FN"/>
                         </constraints>

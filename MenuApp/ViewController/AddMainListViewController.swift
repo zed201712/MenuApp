@@ -240,9 +240,9 @@ class AddMainListViewController: UIViewController {
                 globalMainListHistory.remove(at: 0)
             }
         }
-        if globalSeatList.groupMap.gMap[globalMainList[listIndex].seatNumber].count == 0 {
-            globalMainList.remove(at: listIndex)
+        if globalSeatList.groupMap.gList[globalMainList[listIndex].seatNumber].count == 0 {
             SeatListManage.setUseable(index: globalMainList[listIndex].seatNumber, useable: true)
+            globalMainList.remove(at: listIndex)
         } else {
             globalMainList[listIndex].detailInfo = ""
             globalMainList[listIndex].startTime = ""

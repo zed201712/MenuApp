@@ -36,7 +36,7 @@ class MainPageViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         FileRW.appFirstLoad()
         
-        self.mainListTableView.isEditing = true
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -117,8 +117,10 @@ class MainPageViewController: UIViewController {
             }
         }
         if insertIndex >= 0 {
+            globalMainListIndex = insertIndex
             globalMainList.insert(list, at: insertIndex)
         } else {
+            globalMainListIndex = globalMainList.count
             globalMainList.append(list)
         }
         
@@ -139,6 +141,11 @@ class MainPageViewController: UIViewController {
     }
     
     //MARK: - IBAction
+    
+    @IBAction func editListButtonTouchUpInside(_ sender: Any) {
+        self.mainListTableView.isEditing = !self.mainListTableView.isEditing
+    }
+    
     @IBAction func addListButtonTouchUpInside(_ sender: Any) {
         MainPageViewController.globalMainListAdd()
         
